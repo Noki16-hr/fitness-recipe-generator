@@ -61,12 +61,18 @@ form {
 
 .instructions {
   padding: 16px;
-  border: 1px solid rgba(39, 33, 66, 0.5);
-  width: 80%;
+  border: 1px solid #dcebdd;
+  width: 95%;
   font-size: 16px;
-  border-radius: 50px;
+  border-radius: 10px;
   line-height: 20px;
-  color: #272044;
+  color: #26352b;
+  background-color: #ffffff;
+}
+
+.instructions:focus {
+  outline: 2px solid #2f6b4f;
+  outline-offset: 2px;
 }
 
 .submit-button {
@@ -82,6 +88,15 @@ form {
   transition: background-color 0.2s ease;
 }
 
+.submit-button:hover {
+  background-color: #24563e;
+}
+
+.submit-button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
 .recipe {
   background-color: white;
   padding: 30px;
@@ -91,6 +106,33 @@ form {
   font-size: 15px;
   line-height: 1.8;
   overflow-wrap: anywhere;
+}
+
+.recipe h2 {
+  color: #2f6b4f;
+  font-size: 24px;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.recipe h3 {
+  color: #26352b;
+  font-size: 18px;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+.recipe ul,
+.recipe ol {
+  padding-left: 20px;
+}
+
+.recipe li {
+  margin-bottom: 8px;
+}
+
+.recipe strong {
+  color: #2f6b4f;
 }
 
 .hidden {
@@ -109,12 +151,13 @@ footer {
 }
 
 .generating {
-  animation: blink-animation 1s steps(5, start) infinite;
+  color: #2f6b4f;
+  animation: blink-animation 1.5s ease-in-out infinite;
 }
 
 @keyframes blink-animation {
-  to {
-    visibility: hidden;
+  50% {
+    opacity: 0.4;
   }
 }
 

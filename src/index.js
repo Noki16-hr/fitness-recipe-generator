@@ -34,8 +34,29 @@ and balanced nutrition.
 Use simple HTML formatting.
 Do not include Markdown code fences.
 Clearly label nutritional information as estimates.
+Use an <h2> element for the recipe title.
+Use <h3> elements for section headings.
+Use <ul> for ingredients and <ol> for cooking steps.
+Use <strong> to highlight cooking time and nutrition.
+Keep the formatting clean and easy to read.
 `;
-  let apiURL = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
+
+  let apiURL = "https://api.shecodes.io/ai/v1/generate";
+
+  axios
+    .get(apiURL, {
+      params: {
+        prompt: prompt,
+        context: context,
+        key: apiKey,
+      },
+    })
+    .then(displayRecipe)
+    .catch(function (error) {
+      console.error(error);
+      recipeElement.textContent =
+        "Sorry, something went wrong. Please try again.";
+    });
 
   let recipeElement = document.querySelector("#recipe");
   recipeElement.classList.remove("hidden");
