@@ -1,14 +1,9 @@
 function displayRecipe(response) {
+  console.log("Full API response:", response.data);
+
   let recipeElement = document.querySelector("#recipe");
-
-  recipeElement.textContent = "";
-
-  new Typewriter("#recipe", {
-    strings: [response.data.answer],
-    autoStart: true,
-    delay: 5,
-    cursor: "",
-  });
+  recipeElement.innerHTML =
+    response.data.answer || "No recipe was generated. Please try again.";
 }
 
 function generateRecipe(event) {
@@ -28,29 +23,12 @@ Maximum cooking time: ${cookingTime} minutes.
 `;
 
   let context = `
-You are a healthy fitness chef who creates quick,
-affordable and delicious recipes.
-
-Using the user's ingredients, fitness goal and time limit,
-generate one simple recipe with:
-
-- A creative title in <h2>
-- Total cooking time and servings
-- Ingredients with quantities in <ul>
-- Step-by-step instructions in <ol>
-- Estimated calories and protein per serving
-- One healthy cooking tip
-
-Adapt the recipe to the fitness goal:
-- Muscle gain: prioritize protein.
-- Weight management: prioritize balanced, filling meals.
-- Balanced eating: include protein, vegetables,
-  carbohydrates and healthy fats.
-
-Keep total preparation and cooking within the time limit.
-Use <h3> for sections and <strong> for key information.
-Return only basic HTML, without Markdown code fences.
-Clearly label nutritional values as estimates.
+You are a healthy fitness chef.
+Create one quick, healthy recipe using the user's ingredients.
+Adapt it to their fitness goal and cooking time.
+Include a title, ingredients, instructions, cooking time,
+servings, estimated calories, protein, and one healthy tip.
+Use simple HTML tags. Do not use Markdown.
 `;
 
   let apiURL = "https://api.shecodes.io/ai/v1/generate";
