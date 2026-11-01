@@ -166,3 +166,44 @@ footer {
     visibility: hidden;
   }
 }
+
+.recipe-options {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.option {
+  flex: 1;
+  min-width: 0;
+}
+
+.option label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #26352b;
+}
+
+.option select {
+  width: 100%;
+  padding: 14px 10px;
+  border: 1px solid #dcebdd;
+  border-radius: 10px;
+  background-color: white;
+  color: #26352b;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.option select:focus {
+  outline: 2px solid #2f6b4f;
+  outline-offset: 2px;
+}
+
+@media (max-width: 600px) {
+  .recipe-options {
+    flex-direction: column;
+  }
+}

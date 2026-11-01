@@ -11,8 +11,17 @@ function generateRecipe(event) {
   event.preventDefault();
 
   let instructionsInput = document.querySelector("#user-instructions");
+  let fitnessGoal = document.querySelector("#fitness-goal").value;
+  let cookingTime = document.querySelector("#cooking-time").value;
+
   let apiKey = "oc0tb825b206594e16f09ec343af3b8b";
-  let prompt = `Create a healthy recipe using: ${instructionsInput.value}`;
+
+  let prompt = `
+Create a healthy recipe using: ${instructionsInput.value}.
+
+Fitness goal: ${fitnessGoal}.
+Maximum cooking time: ${cookingTime} minutes.
+`;
 
   let context = `
 You are a professional healthy fitness chef.
@@ -39,6 +48,18 @@ Use <h3> elements for section headings.
 Use <ul> for ingredients and <ol> for cooking steps.
 Use <strong> to highlight cooking time and nutrition.
 Keep the formatting clean and easy to read.
+
+Adapt the recipe to the selected fitness goal.
+
+For muscle gain, prioritize protein-rich ingredients.
+For weight management, prioritize balanced, satisfying meals.
+For balanced eating, include a good balance of protein,
+vegetables, carbohydrates, and healthy fats.
+
+The total preparation and cooking time should not exceed
+the user's selected time limit.
+
+Clearly label calories and protein as estimates.
 `;
 
   let apiURL = "https://api.shecodes.io/ai/v1/generate";
