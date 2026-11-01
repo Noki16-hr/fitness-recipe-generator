@@ -4,7 +4,7 @@ function displayRecipe(response) {
   recipeElement.textContent = "";
 
   new Typewriter("#recipe", {
-    strings: response.data.answer,
+    strings: [response.data.answer],
     autoStart: true,
     delay: 5,
     cursor: "",
