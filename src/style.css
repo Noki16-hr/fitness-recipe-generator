@@ -1,8 +1,10 @@
 body {
   background-color: #f5f8f1;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #26352b;
-  margin: 0;
+  background-image: url("../images/vegetables.png");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 a {
@@ -137,10 +139,6 @@ form {
 
 .hidden {
   display: none;
-}
-
-.recipe strong {
-  color: #885df1;
 }
 
 footer {

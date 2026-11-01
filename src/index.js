@@ -1,8 +1,12 @@
 function displayRecipe(response) {
+  let recipeElement = document.querySelector("#recipe");
+
+  recipeElement.textContent = "";
+
   new Typewriter("#recipe", {
     strings: response.data.answer,
     autoStart: true,
-    delay: 1,
+    delay: 5,
     cursor: "",
   });
 }
@@ -51,6 +55,11 @@ Clearly label nutritional values as estimates.
 
   let apiURL = "https://api.shecodes.io/ai/v1/generate";
 
+  let recipeElement = document.querySelector("#recipe");
+  let submitButton = document.querySelector(".submit-button");
+  submitButton.disabled = true;
+  recipeElement.classList.remove("hidden");
+  recipeElement.textContent = `⏳ Generating a healthy recipe with ${instructionsInput.value}...`;
   axios
     .get(apiURL, {
       params: {
@@ -64,13 +73,10 @@ Clearly label nutritional values as estimates.
       console.error(error);
       recipeElement.textContent =
         "Sorry, something went wrong. Please try again.";
+    })
+    .finally(function () {
+      submitButton.disabled = false;
     });
-
-  let recipeElement = document.querySelector("#recipe");
-  recipeElement.classList.remove("hidden");
-  recipeElement.innerHTML = `<div class="generating"> ⏳ Generating a healthy recipe about ${instructionsInput.value}</div>`;
-
-  axios.get(apiURL).then(displayRecipe);
 }
 
 let recipeFormElement = document.querySelector("#recipe-generator-form");
